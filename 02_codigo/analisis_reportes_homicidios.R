@@ -234,3 +234,12 @@ victimas_x_mes_edo <-
                              entidad == "México" ~ "Estado de México",
                              str_detect(entidad, "Veracruz") ~ "Veracruz",
                              TRUE ~ entidad))
+
+### Unir datos de reportes diarios y víctimas ----
+bd_todo <- 
+  reportes_x_mes %>% 
+  left_join(victimas_x_mes_edo, by = c("fecha_piso" = "fecha", "entidad")) %>% 
+  pivot_longer(num:victimas_x_mes, 
+               names_to = "serie", 
+               values_to = "numero") %>% 
+  mutate(serie = ifelse(serie == "num", "Reporte diario", "Víctimas carpetas de investigación"))
