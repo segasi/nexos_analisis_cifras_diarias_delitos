@@ -106,3 +106,12 @@ for (i in seq_along(dia_mes)) {
     bind_rows(bd, tabla_datos_separados) %>% 
     filter(!is.na(datos)) # Eliminar NAs introducidos al crear el tibble
 }
+
+### Identificar observaciones con problemas potenciales ----
+
+bd %>% 
+  count(entidad, sort = T) %>% 
+  print(n = Inf)
+
+bd %>% 
+  filter(entidad %in% c("0", "1", "2", "3", "7", "8", "10"))
