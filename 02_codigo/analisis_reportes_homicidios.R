@@ -173,6 +173,15 @@ bd <-
                                 fecha == as_date("2019-09-08") & entidad == "Colima" ~ 1,
                                 TRUE ~ 0))
 
+### Generar tibble con cifras por mes y estado ----
+reportes_x_mes <- 
+  bd %>% 
+  filter(fecha < as_date("2019-10-01")) %>% 
+  mutate(fecha_piso = floor_date(fecha, unit = "month")) %>% 
+  group_by(entidad, fecha_piso) %>% 
+  summarise(num = sum(numero)) %>% 
+  ungroup()
+
 
 ### Importar datos de víctimas del SNSP ----
 
