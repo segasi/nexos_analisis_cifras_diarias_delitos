@@ -208,3 +208,20 @@ victimas <-
          admin = ifelse(fecha < as.Date("2018-12-01"), "Peña Nieto", "AMLO")) %>% 
   # Reordenar variables
   select(fecha, año = ano, mes, mes_num, everything())
+
+### Calcular número de víctimas por mes y estado ----
+victimas_x_mes_edo <- 
+  victimas %>% 
+  # Filtrar datos
+  filter(fecha > as_date("2019-03-01"),
+         subtipo_de_delito == "Homicidio doloso") %>% 
+  # Calcular número mensual de vícitimas
+  group_by(fecha, entidad) %>% 
+  summarise(victimas_x_mes = sum(numero), 
+            admin = last(admin)) %>% 
+  ungroup() %>% 
+  mutate(entidad = case_when(str_detect(entidad, "Coahuila") ~ "Coahuila",
+                             str_detect(entidad, "Micho") ~ "Michoacán",
+                             entidad == "México" ~ "Estado de México",
+                             str_detect(entidad, "Veracruz") ~ "Veracruz",
+                             TRUE ~ entidad))
