@@ -144,3 +144,32 @@ bd <-
                              fecha == as_date("2019-07-26") & entidad == "0" ~ "Durango",
                              fecha == as_date("2019-09-08") & entidad == "1" ~ "Colima",
                              TRUE ~ entidad)) 
+
+
+### Crear variable "modificada" ----
+
+# Esta variable permite identificar las observaciones que fueron modificadas manualmente en el paso anterior
+
+bd <- 
+  bd %>% 
+  mutate(modificada = case_when(fecha == as_date("2019-05-12") & entidad == "Ciudad de México" ~ 1,
+                                fecha == as_date("2019-05-12") & entidad == "Coahuila" ~ 1,
+                                fecha == as_date("2019-05-12") & entidad == "Zacatecas" ~ 1,
+                                fecha == as_date("2019-05-26") & entidad == "Tamaulipas" ~ 1,
+                                fecha == as_date("2019-05-26") & entidad == "Guanajuato" ~ 1,
+                                fecha == as_date("2019-06-27") & entidad == "Sonora" ~ 1,
+                                fecha == as_date("2019-06-27") & entidad == "Durango" ~ 1,
+                                fecha == as_date("2019-06-28") & entidad == "Sonora" ~ 1,
+                                fecha == as_date("2019-06-28") & entidad == "Durango" ~ 1,
+                                fecha == as_date("2019-06-29") & entidad == "Tabasco" ~ 1,
+                                fecha == as_date("2019-06-29") & entidad == "Estado de México" ~ 1,
+                                fecha == as_date("2019-06-30") & entidad == "Tabasco" ~ 1,
+                                fecha == as_date("2019-06-30") & entidad == "Estado de México" ~ 1,
+                                fecha == as_date("2019-07-01") & entidad == "Sonora" ~ 1,
+                                fecha == as_date("2019-07-01") & entidad == "Durango" ~ 1,
+                                fecha == as_date("2019-07-03") & entidad == "Sonora" ~ 1,
+                                fecha == as_date("2019-07-03") & entidad == "Durango" ~ 1,
+                                fecha == as_date("2019-07-26") & entidad == "Sonora" ~ 1,
+                                fecha == as_date("2019-07-26") & entidad == "Durango" ~ 1,
+                                fecha == as_date("2019-09-08") & entidad == "Colima" ~ 1,
+                                TRUE ~ 0))
