@@ -18,7 +18,6 @@ for (i in seq_along(dia_mes)) {
            destfile = str_c("01_datos/reportes/gpo_interinstitucional/reporte_gpo_interinstitucional_", dia_mes[i], "2019.pdf", sep = ""))
 }
 
-
 ### Extraer datos de tablas en reportes -----
 
 ## Generar tibble vacío ----
@@ -173,3 +172,11 @@ bd <-
                                 fecha == as_date("2019-07-26") & entidad == "Durango" ~ 1,
                                 fecha == as_date("2019-09-08") & entidad == "Colima" ~ 1,
                                 TRUE ~ 0))
+
+
+### Importar datos de víctimas del SNSP ----
+
+# Aquí vas a tener que ajustar el código para que después de descargar la base de datos de víctimas de esta liga https://drive.google.com/file/d/1iifsxmh1LFz8DUFaPR17H3_IveR6WOAZ/view, la puedas importar
+victimas <- 
+  read_excel("../../../../10 recursos/datos/snsp/victimas/Estatal-V°ctimas - septiembre 2019.xlsx") %>% 
+  clean_names()
