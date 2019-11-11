@@ -20,3 +20,9 @@ for (i in seq_along(dia_mes)) {
 
 
 ### Extraer datos de tablas en reportes -----
+
+## Generar tibble vacío ----
+bd <- tibble(datos = NA,
+             entidad = NA,
+             numero = NA, 
+             fecha = NA)
