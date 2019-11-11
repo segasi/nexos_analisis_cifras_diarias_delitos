@@ -17,3 +17,6 @@ for (i in seq_along(dia_mes)) {
   download(url = str_c("http://www.informeseguridad.cns.gob.mx/files/homicidios_", dia_mes[i], "2019_v2.pdf", sep = ""), 
            destfile = str_c("01_datos/reportes/gpo_interinstitucional/reporte_gpo_interinstitucional_", dia_mes[i], "2019.pdf", sep = ""))
 }
+
+
+### Extraer datos de tablas en reportes -----
