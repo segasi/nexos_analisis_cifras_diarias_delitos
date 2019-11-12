@@ -3,7 +3,7 @@ library(pacman)
 p_load(cowplot, downloader, extrafont, forecast, ggrepel, ggtext, janitor, lubridate, pdftools, psych, readxl, scales, seasonal, sweep, tidyquant, tidyverse, timetk, treemapify, zoo) 
 
 # Importart fuentes
-font_import()
+# font_import()
 
 ### Setup general ----
 Sys.setlocale("LC_ALL", "es_ES.UTF-8") 
