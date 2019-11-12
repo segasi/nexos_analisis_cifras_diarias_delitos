@@ -56,7 +56,9 @@ for (i in seq_along(dia_mes)) {
            !str_detect(value, "Junio"),
            !str_detect(value, "Septiembre"),
            !str_detect(value, "verificados"),
-           !str_detect(value, "corresponden")) %>% 
+           !str_detect(value, "corresponden"),
+           !str_detect(value, "Bavispe"),
+           !str_detect(value, "Los")) %>% 
     # Separar valores correspondientes a dos estados y ponerlo en dos columnas 
     separate(value, into = c("col_1",  "col_2"), 
              sep = "(?<=([0-9] ))",
