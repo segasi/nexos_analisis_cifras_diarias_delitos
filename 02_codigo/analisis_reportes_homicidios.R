@@ -239,7 +239,7 @@ bd_todo <-
   mutate(serie = ifelse(serie == "num", "Reporte diario", "Víctimas carpetas de investigación"))
 
 
-### Gráfica víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP ----
+### Gráfica víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP, por etidad ----
 
 bd_todo %>% 
   ggplot() +
@@ -250,7 +250,7 @@ bd_todo %>%
   scale_y_continuous(labels = comma) + 
   scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
   facet_wrap(~ str_wrap(entidad, width = 15), ncol = 8, scales = "free_y") +
-  labs(title = str_wrap(str_to_upper("víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP",), width = 70),
+  labs(title = str_wrap(str_to_upper("víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP, por etidad",), width = 70),
        x = "",
        y ="Número",
        color = NULL,
