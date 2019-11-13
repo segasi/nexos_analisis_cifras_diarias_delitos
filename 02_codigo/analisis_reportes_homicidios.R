@@ -262,8 +262,6 @@ bd_todo %>%
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_nacional.png", width = 16, height = 10, dpi = 200)
 
 
-
-
 ### Gráfica víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP, por etidad ----
 
 bd_todo %>% 
@@ -275,13 +273,14 @@ bd_todo %>%
   scale_y_continuous(labels = comma) + 
   scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
   facet_wrap(~ str_wrap(entidad, width = 15), ncol = 8, scales = "free_y") +
-  labs(title = str_wrap(str_to_upper("víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP, por etidad",), width = 70),
+  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<br><span style='color:#EE4F42'>REPORTE DIARIO DE LA CNS</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span>, POR ENTIDAD",
        x = "",
        y ="Número",
        color = NULL,
        caption = "@segasi / @JMarquezP / Fuente: SNSP y CNS") +
   tema + 
   theme(panel.grid = element_line(linetype = 3, size = 0.6, color = "grey90"),
+        plot.title = element_markdown(lineheight = 1.3, size = 28, face = "bold", margin = margin(10,0,20,0), family = "Lato Bold"),
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 12),
         axis.text.y = element_text(size = 12),
         strip.background = element_rect(fill = "grey40", color = "grey40"),
