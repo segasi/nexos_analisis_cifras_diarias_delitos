@@ -263,4 +263,4 @@ bd_todo %>%
         strip.text = element_text(color = "white", size = 12),
         legend.position = c(0.82, -0.1),
         legend.direction = "horizontal") +
-  ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso.png", width = 16, height = 10, dpi = 200)
+  ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo.png", width = 16, height = 10, dpi = 200)
