@@ -237,3 +237,30 @@ bd_todo <-
                names_to = "serie", 
                values_to = "numero") %>% 
   mutate(serie = ifelse(serie == "num", "Reporte diario", "Víctimas carpetas de investigación"))
+
+
+### Gráfica víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP ----
+
+bd_todo %>% 
+  ggplot() +
+  geom_line(aes(fecha_piso, numero, 
+                group = serie, 
+                color = serie),
+            size = 1) +
+  scale_y_continuous(labels = comma) + 
+  scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
+  facet_wrap(~ str_wrap(entidad, width = 15), ncol = 8, scales = "free_y") +
+  labs(title = str_wrap(str_to_upper("víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP",), width = 70),
+       x = "",
+       y ="Número",
+       color = NULL,
+       caption = "@segasi / @JMarquezP / Fuente: SNSP y CNS") +
+  tema + 
+  theme(panel.grid = element_line(linetype = 3, size = 0.6, color = "grey90"),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.background = element_rect(fill = "grey40", color = "grey40"),
+        strip.text = element_text(color = "white", size = 12),
+        legend.position = c(0.82, -0.1),
+        legend.direction = "horizontal") +
+  ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso.png", width = 16, height = 10, dpi = 200)
