@@ -248,15 +248,15 @@ bd_todo %>%
             size = 1.5) +
   scale_y_continuous(labels = comma, breaks = seq(2000, 3000, 100)) + 
   scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
-  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<br><span style='color:#EE4F42'>REPORTE DIARIO DE LA CNS</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span>",
-       x = "",
+  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<br><span style='color:#EE4F42'>REPORTE DIARIO DE LA CNS</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span> (2019)",
+       x = "\n",
        y ="Número\n",
        color = NULL,
        caption = "@segasi / Fuente: SNSP y CNS") +
   tema + 
   theme(panel.grid = element_line(linetype = 3, size = 0.6, color = "grey90"),
         plot.title = element_markdown(lineheight = 1.3, size = 28, face = "bold", margin = margin(10,0,20,0), family = "Lato Bold"),
-        axis.text = element_text(size = 14),
+        axis.text = element_text(size = 16),
         legend.position = c(0.82, -0.1),
         legend.direction = "horizontal") +
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_nacional.png", width = 16, height = 10, dpi = 200)
@@ -273,7 +273,7 @@ bd_todo %>%
   scale_y_continuous(labels = comma) + 
   scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
   facet_wrap(~ str_wrap(entidad, width = 15), ncol = 8, scales = "free_y") +
-  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<span style='color:#EE4F42'> REPORTE<br>DIARIO DE LA CNS</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span>, POR ENTIDAD",
+  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<span style='color:#EE4F42'> REPORTE<br>DIARIO DE LA CNS</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span>, POR ENTIDAD (2019)",
        x = "",
        y ="Número",
        color = NULL,
@@ -287,4 +287,4 @@ bd_todo %>%
         strip.text = element_text(color = "white", size = 12),
         legend.position = c(0.82, -0.1),
         legend.direction = "horizontal") +
-  ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo.png", width = 16, height = 10, dpi = 200)
+  ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo.png", width = 16.5, height = 10, dpi = 200)
