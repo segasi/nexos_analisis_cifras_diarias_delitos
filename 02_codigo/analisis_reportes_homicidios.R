@@ -5,7 +5,7 @@ source("02_codigo/paquetes_setup_tema.R")
 
 ## Generar vector con fechas de reportes ----
 dia_mes <- 
-  tibble(fecha = seq(as.Date("2019-04-03"), length = 223, by = "1 day"),
+  tibble(fecha = seq(as.Date("2019-04-03"), length = 212, by = "1 day"),
          dia = str_pad(day(fecha), width = 2, pad = "0"),
          mes = str_pad(month(fecha), width = 2, pad = "0"),
          dia_mes = str_c(dia, mes, sep = "")) %>% 
@@ -181,7 +181,7 @@ reportes_x_mes <-
 
 # Aquí vas a tener que ajustar el código para que después de descargar la base de datos de víctimas de esta liga https://drive.google.com/file/d/1iifsxmh1LFz8DUFaPR17H3_IveR6WOAZ/view, la puedas importar
 victimas <- 
-  read_excel("../../../../10 recursos/datos/snsp/victimas/Estatal-V°ctimas - septiembre 2019.xlsx") %>% 
+  read_excel("../../../../10 recursos/datos/snsp/victimas/Estatal-Víctimas - octubre 2019.xlsx") %>% 
   clean_names()
 
 ### Tidyear datos de víctimas ----
