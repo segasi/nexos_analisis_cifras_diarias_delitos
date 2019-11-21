@@ -249,7 +249,7 @@ bd_todo %>%
   scale_y_continuous(labels = comma, breaks = seq(2000, 3000, 100)) + 
   scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b") +
-  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<br><span style='color:#EE4F42'>REPORTE DIARIO </span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span> (2019)",
+  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<br><span style='color:#EE4F42'>REPORTE DIARIO</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span> (2019)",
        x = "\n",
        y ="Número\n",
        color = NULL,
@@ -257,7 +257,7 @@ bd_todo %>%
   tema + 
   theme(panel.grid = element_line(linetype = 3, size = 0.6, color = "grey90"),
         plot.title = element_markdown(lineheight = 1.3, size = 28, face = "bold", margin = margin(10,0,20,0), family = "Lato Bold"),
-        axis.text = element_text(size = 16),
+        axis.text = element_text(size = 18),
         legend.position = c(0.82, -0.1),
         legend.direction = "horizontal") +
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_nacional.png", width = 16, height = 10, dpi = 200)
