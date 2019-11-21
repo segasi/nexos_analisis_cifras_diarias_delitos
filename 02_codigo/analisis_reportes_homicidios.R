@@ -248,6 +248,7 @@ bd_todo %>%
             size = 1.5) +
   scale_y_continuous(labels = comma, breaks = seq(2000, 3000, 100)) + 
   scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
   labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<br><span style='color:#EE4F42'>REPORTE DIARIO DE LA CNS</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span> (2019)",
        x = "\n",
        y ="Número\n",
