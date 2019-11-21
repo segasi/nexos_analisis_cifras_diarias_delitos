@@ -258,7 +258,8 @@ bd_todo %>%
   theme(panel.grid = element_line(linetype = 3, size = 0.6, color = "grey90"),
         plot.title = element_markdown(lineheight = 1.3, size = 28, face = "bold", margin = margin(10,0,20,0), family = "Lato Bold"),
         axis.text = element_text(size = 18),
-        legend.position = c(0.82, -0.1),
+        legend.text = element_text(size = 20),
+        legend.position = c(0.75, -0.12),
         legend.direction = "horizontal") +
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_nacional.png", width = 16, height = 10, dpi = 200)
 
