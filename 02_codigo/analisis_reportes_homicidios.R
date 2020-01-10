@@ -335,7 +335,7 @@ bd_todo %>%
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo.png", width = 16.5, height = 10, dpi = 200)
 
 
-### Calcular número y % de coincidencia en el sentido del cambio mensual de la serie usando datos del reporte diario y de la bd de víctimas del SNSP ----
+### Calcular número y % de coincidencia en el sentido del cambio mensual de la serie usando datos del reporte diario y de la bd de víctimas del SNSP, todos los estados ----
 reportes_x_mes %>% 
   # Unir datos de reportes diarios y víctimas
   left_join(victimas_x_mes_edo, by = c("fecha_piso" = "fecha", "entidad")) %>% 
