@@ -210,9 +210,11 @@ reportes_x_mes <-
 
 ### Importar datos de víctimas del SNSP ----
 
-# Aquí vas a tener que ajustar el código para que después de descargar la base de datos de víctimas de esta liga https://drive.google.com/file/d/1iifsxmh1LFz8DUFaPR17H3_IveR6WOAZ/view, la puedas importar
+# Aquí vas a tener que ajustar el código para que después de descargar la base de datos de víctimas de esta liga https://drive.google.com/file/d/1HD4vP9_uPwKJs-Yu9Yg1ywiP3eWupA_q/view, la puedas importar
+
+# Ojo: aquí vas a tener que ajustar la ruta para poder acceder al archivo después de que lo hayas descargado
 victimas <- 
-  read_excel("../../../../10 recursos/datos/snsp/victimas/Estatal-Víctimas - octubre 2019.xlsx") %>% 
+  read_excel("../../../../10 recursos/datos/snsp/victimas/Estatal-Víctimas - noviembre 2019.xlsx") %>% 
   clean_names()
 
 ### Tidyear datos de víctimas ----
