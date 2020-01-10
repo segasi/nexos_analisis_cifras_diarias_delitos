@@ -335,7 +335,7 @@ bd_todo %>%
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo.png", width = 16.5, height = 10, dpi = 200)
 
 
-### Calcular número y % de coincidencia en el sentido del cambio mensual de la serie usando datos del reporte diario y de la bd de víctimas del SNSP ----
+### Calcular número y % de coincidencia en el sentido del cambio mensual de la serie usando datos del reporte diario y de la bd de víctimas del SNSP, todos los estados ----
 reportes_x_mes %>% 
   # Unir datos de reportes diarios y víctimas
   left_join(victimas_x_mes_edo, by = c("fecha_piso" = "fecha", "entidad")) %>% 
@@ -353,3 +353,28 @@ reportes_x_mes %>%
   count(coinciden) %>% 
   # Calcular porcentajes
   mutate(por = n/sum(n)) 
+
+
+### Calcular número y % de coincidencia en el sentido del cambio mensual de la serie usando datos del reporte diario y de la bd de víctimas del SNSP, por estado ----
+reportes_x_mes %>% 
+  # Unir datos de reportes diarios y víctimas
+  left_join(victimas_x_mes_edo, by = c("fecha_piso" = "fecha", "entidad")) %>%
+  group_by(entidad) %>% 
+  # Calcular cambio mensual de homicidios de acuerdo con datos del reporte diario
+  mutate(cambio_num = num - lag(num), 
+         # Calcular cambio mensual de víctimas de acuerdo con datos del SNSP
+         cambio_victimas = victimas_x_mes - lag(victimas_x_mes),
+         # Crear variable para identificar si el sentido del cambio en ambas series coincide
+         coinciden = ifelse(cambio_num > 0 & cambio_victimas > 0 | cambio_num < 0 & cambio_victimas < 0, "Coinciden", "No coinciden")) %>% 
+  ungroup() %>% 
+  # Eliminar las observaciones correspondientes al primer mes para todos los estados
+  filter(!is.na(cambio_num)) %>%  
+  # Calcular frecuencias y % por entidad
+  group_by(entidad) %>% 
+  count(coinciden) %>% 
+  mutate(por = n/sum(n)) %>% 
+  ungroup() %>% 
+  # Filtrar para mantener solo las observaciones con el % de coincidencia
+  filter(coinciden == "Coinciden") %>% 
+  arrange(-por) %>% 
+  print(n = Inf)
