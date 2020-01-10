@@ -296,6 +296,15 @@ bd_todo %>%
         legend.direction = "horizontal") +
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_nacional.png", width = 16, height = 10, dpi = 200)
 
+### Calcular diferencias porcentuales entre las líneas roja y azul de la primera gráfica del artículo ----
+
+bd_todo %>% 
+  group_by(fecha_piso, serie) %>% 
+  summarise(numero = sum(numero)) %>% 
+  mutate(diferencia = numero - lag(numero),
+         diferencia_porcentual = diferencia/numero*100) %>% 
+  ungroup()  
+
 
 ### Gráfica víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP, por etidad ----
 
