@@ -334,6 +334,33 @@ bd_todo %>%
         legend.direction = "horizontal") +
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo.png", width = 16.5, height = 10, dpi = 200)
 
+### Gráfica víctimas mensuales de homicidio doloso de acuerdo con el reporte diario de la CNS y el reporte mensual del SNSP, por etidad, misma escala ----
+
+bd_todo %>% 
+  ggplot() +
+  geom_line(aes(fecha_piso, numero, 
+                group = serie, 
+                color = serie),
+            size = 1) +
+  scale_y_continuous(labels = comma) + 
+  scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
+  facet_wrap(~ str_wrap(entidad, width = 15), ncol = 8) +
+  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<span style='color:#EE4F42'> REPORTE<br>DIARIO</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span>, POR ENTIDAD (2019)",
+       x = "",
+       y ="Número",
+       color = NULL,
+       caption = "@segasi / Fuente: SNSP y CNS") +
+  tema + 
+  theme(panel.grid = element_line(linetype = 3, size = 0.6, color = "grey90"),
+        plot.title = element_markdown(lineheight = 1.3, size = 28, face = "bold", margin = margin(10,0,20,0), family = "Lato Bold"),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 12),
+        axis.text.y = element_text(size = 12),
+        strip.background = element_rect(fill = "grey40", color = "grey40"),
+        strip.text = element_text(color = "white", size = 12),
+        legend.position = c(0.82, -0.1),
+        legend.direction = "horizontal") +
+  ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo_misma_escala.png", width = 16.5, height = 10, dpi = 200)
 
 ### Calcular número y % de coincidencia en el sentido del cambio mensual de la serie usando datos del reporte diario y de la bd de víctimas del SNSP, todos los estados ----
 reportes_x_mes %>% 
