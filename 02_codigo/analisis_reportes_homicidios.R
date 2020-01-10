@@ -5,7 +5,7 @@ source("02_codigo/paquetes_setup_tema.R")
 
 ## Generar vector con fechas de reportes ----
 dia_mes <- 
-  tibble(fecha = seq(as.Date("2019-04-03"), length = 212, by = "1 day"),
+  tibble(fecha = seq(as.Date("2019-04-03"), length = 242, by = "1 day"),
          dia = str_pad(day(fecha), width = 2, pad = "0"),
          mes = str_pad(month(fecha), width = 2, pad = "0"),
          dia_mes = str_c(dia, mes, sep = "")) %>% 
@@ -107,7 +107,7 @@ bd %>%
   print(n = Inf)
 
 bd %>% 
-  filter(entidad %in% c("0", "1", "2", "3", "7", "8", "10"))
+  filter(entidad %in% c("0", "1", "2", "3", "7", "8", "10", "Durango Sonora", "Estado de México Tabasco", "Guanajuato Tamaulipas", "3", "7", "8", "10"))
 
 
 ### Reemplazar manualmente observaciones con problemas ----
@@ -137,6 +137,14 @@ bd <-
                              fecha == as_date("2019-07-26") & entidad == "0" ~ "Durango",
                              fecha == as_date("2019-09-08") & entidad == "1" ~ "Colima",
                              TRUE ~ entidad)) 
+
+### Volver a calcular frecuencia de nombre de entidades
+
+# Si las correcciones manuales hechas en el paso anterior son correctas, entonces cada entidad debería tener la misma frecuencia
+
+bd %>% 
+  count(entidad, sort = T) %>% 
+  print(n = Inf)
 
 
 ### Crear variable "modificada" ----
@@ -274,8 +282,9 @@ bd_todo %>%
             size = 1) +
   scale_y_continuous(labels = comma) + 
   scale_color_manual(values = c("#EE4F42", "#06A2BC")) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
   facet_wrap(~ str_wrap(entidad, width = 15), ncol = 8, scales = "free_y") +
-  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<span style='color:#EE4F42'> REPORTE<br>DIARIO DE LA CNS</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span>, POR ENTIDAD (2019)",
+  labs(title = "VÍCTIMAS MENSUALES DE HOMICIDIO DOLOSO DE ACUERDO CON EL<span style='color:#EE4F42'> REPORTE<br>DIARIO</span> Y EL <span style='color:#06A2BC'>REPORTE MENSUAL DEL SNSP</span>, POR ENTIDAD (2019)",
        x = "",
        y ="Número",
        color = NULL,
