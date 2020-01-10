@@ -56,7 +56,7 @@ tabla_dos_cols <-
          
 ### Generar tibble con variables separadas -----
 
-# Una columna registra el nombre de la entidad entidad y otra para el número de homicidios dolosos del día correspondiente
+# Una columna registra el nombre de la entidad entidad y otra el número de homicidios dolosos del día correspondiente
 tabla_datos_separados <- 
   tibble(datos = c(tabla_dos_cols$col_1, tabla_dos_cols$col_2)) %>%
   # Eliminar rengñones con valor NA o con ""
