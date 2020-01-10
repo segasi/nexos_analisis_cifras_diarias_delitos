@@ -146,6 +146,29 @@ bd %>%
   count(entidad, sort = T) %>% 
   print(n = Inf)
 
+### Verificar todas las observaciones para aquellas fechas que presentaron uno o más errores
+
+bd %>% filter(fecha == as_date("2019-05-12")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-05-26")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-06-27")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-06-28")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-06-29")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-06-30")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-07-01")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-07-03")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-07-26")) %>% arrange(entidad) %>% print(n = Inf)
+
+bd %>% filter(fecha == as_date("2019-09-08")) %>% arrange(entidad) %>% print(n = Inf)
+
+
 
 ### Crear variable "modificada" ----
 
