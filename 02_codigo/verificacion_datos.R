@@ -5,8 +5,10 @@ source("02_codigo/paquetes_setup_tema.R")
 
 # Para hacer las pruebas que describo en "analisis_reportes_homicidios.R, es necesario ajustar la fecha en la última parte del nombre del PDF
 
+dia_mes <- "2911"
+
 texto <- 
-  pdf_text(pdf = "01_datos/reportes/gpo_interinstitucional/reporte_gpo_interinstitucional_08092019.pdf")[[1]]
+  pdf_text(pdf = str_c("01_datos/reportes/gpo_interinstitucional/reporte_gpo_interinstitucional_", dia_mes,"2019.pdf"))[[1]]
 
 ### Extraer dato de las dos columnas ----
 tabla_dos_cols <- 
@@ -68,5 +70,5 @@ tabla_datos_separados <-
          numero = str_extract_all(datos, "\\(?[0-9,.]+\\)?")) %>% 
   unnest(numero) %>% 
   mutate(numero = as.numeric(numero),
-         fecha = make_date(2019, str_sub(string = dia_mes[i], start = 3, end = 4), str_sub(string = dia_mes[i], start = 1, end = 2))) %>% 
+         fecha = make_date(2019, str_sub(string = dia_mes, start = 3, end = 4), str_sub(string = dia_mes, start = 1, end = 2))) %>% 
   print(n = Inf)
