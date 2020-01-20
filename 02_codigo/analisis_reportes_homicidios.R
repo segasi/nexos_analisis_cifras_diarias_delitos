@@ -362,6 +362,50 @@ bd_todo %>%
         legend.direction = "horizontal") +
   ggsave("03_graficas/comparacion_mensual_reporte_vs_victimas_homicidio_doloso_por_edo_misma_escala.png", width = 16.5, height = 10, dpi = 200)
 
+
+### Datos mensuales de diversas entidades ---
+
+# Chihuahua
+bd_todo %>% 
+  pivot_wider(names_from = "serie", 
+              values_from = "numero") %>% 
+  mutate(ratio = `Víctimas carpetas de investigación`/`Reporte diario`,
+         cambio = (`Víctimas carpetas de investigación`-`Reporte diario`)/`Reporte diario`*100) %>% 
+  filter(entidad == "Chihuahua")
+
+# Tabasco
+bd_todo %>% 
+  pivot_wider(names_from = "serie", 
+              values_from = "numero") %>% 
+  mutate(ratio = `Víctimas carpetas de investigación`/`Reporte diario`,
+         cambio = (`Víctimas carpetas de investigación`-`Reporte diario`)/`Reporte diario`*100) %>% 
+  filter(entidad == "Tabasco")
+
+# Guanajuato
+bd_todo %>% 
+  pivot_wider(names_from = "serie", 
+              values_from = "numero") %>% 
+  mutate(ratio = `Víctimas carpetas de investigación`/`Reporte diario`,
+         cambio = (`Víctimas carpetas de investigación`-`Reporte diario`)/`Reporte diario`*100) %>% 
+  filter(entidad == "Guanajuato")
+
+# Tamaulipas
+bd_todo %>% 
+  pivot_wider(names_from = "serie", 
+              values_from = "numero") %>% 
+  mutate(ratio = `Víctimas carpetas de investigación`/`Reporte diario`,
+         cambio = (`Víctimas carpetas de investigación`-`Reporte diario`)/`Reporte diario`*100) %>% 
+  filter(entidad == "Tamaulipas")
+
+# Puebla
+bd_todo %>% 
+  pivot_wider(names_from = "serie", 
+              values_from = "numero") %>% 
+  mutate(ratio = `Víctimas carpetas de investigación`/`Reporte diario`,
+         cambio = (`Víctimas carpetas de investigación`-`Reporte diario`)/`Reporte diario`*100) %>% 
+  filter(entidad == "Puebla")
+
+
 ### Calcular número y % de coincidencia en el sentido del cambio mensual de la serie usando datos del reporte diario y de la bd de víctimas del SNSP, todos los estados ----
 reportes_x_mes %>% 
   # Unir datos de reportes diarios y víctimas
