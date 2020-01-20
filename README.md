@@ -1,6 +1,6 @@
 # ¿Cómo rescatamos la señal?
 
-Este repo contiene el código y gráficas que usé/generé para el análisis publicado en el número de febrero de 2020 de la revista Nexos.
+Este repo contiene los datos, el código y gráficas que usé/generé para el análisis publicado en el número de febrero de 2020 de la revista Nexos.
 
 En este texto discuto como podemos rescatar la "señal" del [reporte diario de homicidios](http://www.informeseguridad.cns.gob.mx/) publicado por la CNS.
 
