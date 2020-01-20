@@ -214,7 +214,7 @@ reportes_x_mes <-
 
 # Ojo: aquí vas a tener que ajustar la ruta para poder acceder al archivo después de que lo hayas descargado
 victimas <- 
-  read_excel("../../../../10 recursos/datos/snsp/victimas/Estatal-Víctimas - noviembre 2019.xlsx") %>% 
+  read_excel("01_datos/Estatal-Víctimas - noviembre 2019.xlsx") %>% 
   clean_names()
 
 ### Tidyear datos de víctimas ----
