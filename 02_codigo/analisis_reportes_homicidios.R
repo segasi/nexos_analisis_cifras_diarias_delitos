@@ -3,6 +3,10 @@ source("02_codigo/paquetes_setup_tema.R")
 
 ### Extraer datos de tablas en reportes -----
 
+# Para poder a cabo los pasos incluidos entre los renglones 4 a 212 es necesario que antes hayas descargado los PDFs usando el script descargar_reportes.R. Si aún no lo haces, por favor descomenta la siguiente línea de código y ejecútala. El proceso lleva unos minutos y necesitas tener conexión a internet.
+
+# source("02_codigo/descargar_reportes.R")
+
 ## Generar vector con fechas de reportes ----
 dia_mes <- 
   tibble(fecha = seq(as.Date("2019-04-03"), length = 242, by = "1 day"),
